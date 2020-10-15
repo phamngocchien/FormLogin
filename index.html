@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Form validation</title>
+     <link rel="stylesheet" href="/main.css">
+     <link rel="stylesheet" href="/validator.js">
+</head>
+<body>
+  <div class="main">
+    <form action="" method="POST" class="form" id="form-1">
+      <h3 class="heading">LOGIN</h3>
+      <p class="desc">Welcome my channel ❤️</p>
+       
+      <div class="spacer"></div>
+        
+            <div class="form-group">
+              <label for="fullname" class="form-label">Tài khoản</label>
+              <input id="fullname" name="fullname" type="text" placeholder="Nhập tài khoản" class="form-control">
+              <span class="form-message"></span>
+            </div>              
+            <div class="form-group">
+              <label for="password" class="form-label">Mật khẩu</label>
+              <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+              <span class="form-message"></span>
+            </div>     
+            <button class="form-submit">Login</button>
+    </form>        
+  </div>
+  <script src="./validator.js"></script>
+  <script>
+    Validator({
+      form: '#form-1',
+      errorSelector: '.form-message',
+      formGroupSelector: '.form-group',
+      rules: [
+        Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ'),
+        Validator.isRequired('#password', 'Vui lòng nhập password'),
+        Validator.minLength('#password', 6),
+      ],
+      onSubmit: function(data){
+        //callAPI
+        console.log(data);
+      },
+    });
+  </script>
+</body>
+</html>
